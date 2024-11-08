@@ -26,30 +26,6 @@ from PIL import Image, ImageFilter
 import matplotlib.pyplot as plt
 import os
 
-# Para leer imagenes de Google Drive
-#from google.colab import drive
-#drive.mount('/content/drive')
-
-# Path de la carpeta donde tenemos las imágenes
-#folder = "/content/drive/My Drive/UPSO/Python Avanzada 2024-2/Clases/data/imgs/" #@param {type:"string"}
-#ruta = '/content/drive/MyDrive/UPSO/TÉCNICO A UNIVERSITARIO A EN TECNOLOGÍAS DE PROGRAMACIÓN/2° Cuatrimestre/Python avanzado/Proyecto_2/img/'
-
-#import cv2 # pip install
-
-# Para visualizar en Colab
-#from google.colab.patches import cv2_imshow # cv.imshow
-
-# Leer imagen
-#img = cv2.imread(ruta + 'gato.jpg', cv2.IMREAD_COLOR)
-#cv2_imshow(img)
-
-#img.shape
-
-#funciona pero deforma la foto
-
-
-#primerStrRuta : contendrá la ruta para acceder a una imagen (Drive o URL)
-#segundoStrClave : contendrá una palabra clave, que podrá ser “Youtube, Instagram, Twitter o Facebook”.
 
   # # tamaños = {
   #     "YouTube": (1280, 720),
@@ -60,6 +36,17 @@ import os
 
 
 def LeerAbrirRedimensionar( strRuta , strPalabaraClave ):
+    """
+    Lee una imagen y la redimensiona según la plataforma especificada 
+    ('YouTube', 'Instagram', 'Twitter', 'Facebook'). Guarda la imagen redimensionada.
+
+    Parámetros:
+    - strRuta: Ruta de la imagen.
+    - strPalabaraClave: Plataforma de redimensionado ('YouTube', 'Instagram', 'Twitter', 'Facebook').
+
+    Retorna:
+    - Imagen redimensionada.
+    """
 
     img_leida = cv2.imread(strRuta)
 
@@ -95,6 +82,15 @@ def LeerAbrirRedimensionar( strRuta , strPalabaraClave ):
 """
 
 def AjustarContrasteImg(img):
+    """
+    Ajusta el contraste de una imagen utilizando ecualización de histograma.
+
+    Parámetros:
+    - img: Imagen a la cual se le ajustará el contraste.
+
+    La función convierte la imagen a escala de grises si es necesario, 
+    aplica ecualización de histograma y muestra la imagen original y la ecualizada.
+    """
     # Verificar si la imagen es válida
     if img is None:
         raise ValueError("La imagen no es válida.")
@@ -131,6 +127,15 @@ def AjustarContrasteImg(img):
 #nueva_imagen = LeerAbrirRedimensionar(ruta + 'dog.jpg', 'YouTube')
 
 def AjustarContrasteImg(img):
+    """
+    Ajusta el contraste de una imagen aplicando ecualización de histograma 
+    solo al canal de luminancia (Y) en el espacio de color YUV.
+
+    Parámetros:
+    - img: Imagen sobre la cual se aplicará el ajuste de contraste.
+
+    La función guarda y muestra tanto la imagen original como la ecualizada.
+    """
     # Verificar si la imagen es válida
     if img is None:
         raise ValueError("La imagen no es válida.")
@@ -193,20 +198,19 @@ def AjustarContrasteImg(img):
 
 """
 
-# filters = {
-#     'ORIGINAL': None,
-#     'BLUR': ImageFilter.BLUR,
-#     'CONTOUR': ImageFilter.CONTOUR,
-#     'DETAIL': ImageFilter.DETAIL,
-#     'EDGE ENHANCE': ImageFilter.EDGE_ENHANCE,
-#     'EDGE ENHANCE MORE': ImageFilter.EDGE_ENHANCE_MORE,
-#     'EMBOSS': ImageFilter.EMBOSS,
-#     'FIND EDGES': ImageFilter.FIND_EDGES,
-#     'SHARPEN': ImageFilter.SHARPEN,
-#     'SMOOTH': ImageFilter.SMOOTH
-# }esto se va a mostrar en el menu, para que el usuario pueda seleccionar el filtro
-
 def filtrosMostrarGuardar(ruta_imagen, filtro_seleccionado):
+    """
+    Aplica un filtro seleccionado a una imagen y muestra tanto la imagen original 
+    como la imagen filtrada. Además, guarda la imagen filtrada y genera una figura 
+    con todas las versiones de la imagen utilizando los filtros disponibles.
+
+    Parámetros:
+    - ruta_imagen: Ruta de la imagen a procesar.
+    - filtro_seleccionado: El filtro a aplicar de los filtros predefinidos (e.g., BLUR, SHARPEN).
+
+    La función guarda la imagen filtrada, muestra la imagen original y la filtrada, 
+    y guarda una figura con todas las versiones filtradas.
+    """
     # Verificar si la imagen existe en la ruta
     if not os.path.exists(ruta_imagen):
         raise FileNotFoundError(f"La imagen en la ruta {ruta_imagen} no se encontró.")
