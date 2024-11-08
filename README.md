@@ -21,7 +21,5 @@ Asegúrate de tener las siguientes librerías instaladas para ejecutar el proyec
 - Matplotlib
 - Numpy
 
-Puedes instalar las dependencias con el siguiente comando:
-
-```bash
-pip install opencv-python pillow matplotlib numpy
+## Observaciones
+-Este proyecto fue probado y realizado en google Colab, en visual estudio code, surgio un conflicto con la funcion im.show y im_show, solo correr como prueba en google colab, se adjuntan imagenes de prueba
